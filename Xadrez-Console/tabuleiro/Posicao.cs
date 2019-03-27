@@ -4,8 +4,8 @@ using System.Text;
 
 namespace tabuleiro {
     class Posicao {
-        public int Linha { get; set; }
-        public int Coluna { get; set; }
+        public int linha { get; set; }
+        public int coluna { get; set; }
 
         public Posicao(int linha, int coluna) {
             this.linha = linha;
