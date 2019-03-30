@@ -6,28 +6,28 @@ namespace tabuleiro {
     class Tabuleiro {
         public int Linhas { get; set; }
         public int Colunas { get; set; }
-        private Peca[,] pecas;
+        private Peca[,] Pecas;
 
         public Tabuleiro(int linhas, int colunas) {
             this.Linhas = linhas;
             this.Colunas = colunas;
-            pecas = new Peca[linhas, colunas];
+            Pecas = new Peca[linhas, colunas];
         }
 
         public Peca Peca(int linha, int coluna) {
-            return pecas[linha, coluna];
+            return Pecas[linha, coluna];
         }
 
         public Peca Peca(Posicao pos) {
-            return pecas[pos.linha, pos.coluna];
+            return Pecas[pos.linha, pos.coluna];
         }
 
         public void ColocarPeca(Peca peca, Posicao posicao) {
             if (ExistePeca(posicao)) {
                 throw new TabuleiroException("Já existe uma peça nessa posicao");
             }
-            pecas[posicao.linha, posicao.coluna] = peca;
-            peca.posicao = posicao;
+            Pecas[posicao.linha, posicao.coluna] = peca;
+            peca.Posicao = posicao;
         }
 
         public bool ExistePeca(Posicao pos) {
@@ -48,6 +48,16 @@ namespace tabuleiro {
             else {
                 return true;
             }
+        }
+
+        public Peca retirarPeca(Posicao posicao) {
+            if (Peca(posicao) == null) {
+                return null;
+            }
+            Peca aux = Peca(posicao);
+            aux.Posicao = null;
+            Pecas[posicao.linha, posicao.coluna] = null;
+            return aux;
         }
 
     }

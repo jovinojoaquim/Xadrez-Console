@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using tabuleiro;
+using xadrez;
 
 namespace Xadrez_Console {
     class Tela {
@@ -24,8 +25,15 @@ namespace Xadrez_Console {
             Console.WriteLine("  a b c d e f g h");
         }
 
+        public static PosicaoXadrez LerPosicaoXadrez() {
+            string s = Console.ReadLine();
+            char coluna = s[0];
+            int linha = int.Parse(s[1] + "");
+            return new PosicaoXadrez(coluna, linha);
+        }
+
         public static void ImprimirPeca(Peca peca) {
-            if(peca.cor == Cor.Branca) {
+            if(peca.Cor == Cor.Branca) {
                 Console.Write(peca);
             }
             else{
