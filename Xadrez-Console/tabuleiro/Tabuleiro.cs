@@ -27,7 +27,7 @@ namespace tabuleiro {
                 throw new TabuleiroException("Já existe uma peça nessa posicao");
             }
             Pecas[posicao.linha, posicao.coluna] = peca;
-            peca.Posicao = posicao;
+            peca.posicao = posicao;
         }
 
         public bool ExistePeca(Posicao pos) {
@@ -55,7 +55,7 @@ namespace tabuleiro {
                 return null;
             }
             Peca aux = Peca(posicao);
-            aux.Posicao = null;
+            aux.posicao = null;
             Pecas[posicao.linha, posicao.coluna] = null;
             return aux;
         }
