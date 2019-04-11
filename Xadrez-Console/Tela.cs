@@ -68,5 +68,33 @@ namespace Xadrez_Console {
             }
 
         }
+
+        public static void ImprimirPartida(PartidaDeXadrez partida) {
+            Tela.ImprimirTabuleiro(partida.Tab);
+            Console.WriteLine();
+            ImprimirPecasCapturadas(partida);
+
+            Console.WriteLine("Turno " + partida.Turno);
+            Console.WriteLine("Aguardando Jogada: " + partida.JogadorAtual);
+        }
+
+        public static void ImprimirPecasCapturadas(PartidaDeXadrez partida) {
+            Console.WriteLine("Peças Capturadas: ");
+            Console.Write("Brancas: ");
+            ImprimirConjunto(partida.PecasCapturadas(Cor.Branca));
+            Console.WriteLine();
+            Console.Write("Pretas: ");
+            ImprimirConjunto(partida.PecasCapturadas(Cor.Preta));
+            Console.WriteLine();
+            Console.WriteLine();
+        }
+
+        private static void ImprimirConjunto(HashSet<Peca> Conjunto) {
+            Console.Write("[");
+            foreach(Peca x in Conjunto) {
+                Console.Write(x+" ");
+            }
+            Console.Write("]");
+        }
     }
 }

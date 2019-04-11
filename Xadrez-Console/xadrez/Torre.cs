@@ -60,7 +60,7 @@ namespace xadrez {
             return p == null || p.Cor != this.Cor;
         }
         public override string ToString() {
-            return "T";
+            return "T ";
         }
     }
 }
