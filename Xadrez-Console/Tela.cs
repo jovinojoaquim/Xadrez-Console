@@ -28,7 +28,7 @@ namespace Xadrez_Console {
         public static void ImprimirTabuleiro(Tabuleiro tab, bool[,] posicoesPossiveis) {
 
             ConsoleColor fundoOriginal = Console.BackgroundColor;
-            ConsoleColor fundoAlterado = ConsoleColor.DarkGray; 
+            ConsoleColor fundoAlterado = ConsoleColor.DarkGray;
             for (int i = 0; i < tab.Linhas; i++) {
                 Console.Write(8 - i + " ");
                 for (int j = 0; j < tab.Colunas; j++) {
@@ -75,7 +75,18 @@ namespace Xadrez_Console {
             ImprimirPecasCapturadas(partida);
 
             Console.WriteLine("Turno " + partida.Turno);
-            Console.WriteLine("Aguardando Jogada: " + partida.JogadorAtual);
+            if (!partida.Terminada) {
+
+                Console.WriteLine("Aguardando Jogada: " + partida.JogadorAtual);
+                if (partida.Xeque) {
+                    Console.WriteLine("Xeque!");
+                }
+            }
+            else {
+                Console.WriteLine("XEQUE MATE!");
+                Console.WriteLine("O vencedor foi: "+ partida.JogadorAtual);
+            }
+
         }
 
         public static void ImprimirPecasCapturadas(PartidaDeXadrez partida) {
@@ -91,8 +102,8 @@ namespace Xadrez_Console {
 
         private static void ImprimirConjunto(HashSet<Peca> Conjunto) {
             Console.Write("[");
-            foreach(Peca x in Conjunto) {
-                Console.Write(x+" ");
+            foreach (Peca x in Conjunto) {
+                Console.Write(x + " ");
             }
             Console.Write("]");
         }
